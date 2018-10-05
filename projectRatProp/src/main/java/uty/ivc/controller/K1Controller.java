@@ -1,10 +1,7 @@
 package uty.ivc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uty.ivc.model.K1;
 import uty.ivc.repository.K1JpaRepository;
 
@@ -22,8 +19,15 @@ public class K1Controller {
     public List<K1> findAll() {
         return k1JpaRepository.findAll();
     }
+
     @GetMapping(value = "/{id}")
     public Optional<K1> findK1ById(@PathVariable final Long id) {
         return k1JpaRepository.findById(id);
+    }
+
+    @GetMapping(value = "/load")
+    public List<K1> load(@RequestBody final K1 k1) {
+        k1JpaRepository.save(k1);
+        return k1JpaRepository.findAll();
     }
 }
