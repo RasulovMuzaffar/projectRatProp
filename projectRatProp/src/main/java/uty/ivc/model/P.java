@@ -1,6 +1,10 @@
 package uty.ivc.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,9 +15,10 @@ public class P {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String description;
+    private Timestamp date;
     private Double value;
-
+    @JsonBackReference
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "p")
     private Set<Proposal> proposals = new HashSet<>(0);
 
@@ -25,12 +30,12 @@ public class P {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public Timestamp getDate() {
+        return date;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 
     public Double getValue() {

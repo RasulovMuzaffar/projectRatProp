@@ -7,4 +7,5 @@ import uty.ivc.model.Users;
 @Component
 public interface UserJpaRepository extends JpaRepository<Users, Long> {
 
+    Users findUsersByLastNameOrFirstName(String lastname, String firstname);
 }

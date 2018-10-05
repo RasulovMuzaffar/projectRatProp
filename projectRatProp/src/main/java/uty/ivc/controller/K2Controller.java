@@ -5,25 +5,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import uty.ivc.model.K1;
-import uty.ivc.repository.K1JpaRepository;
+import uty.ivc.model.K2;
+import uty.ivc.repository.K2JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/k1")
-public class K1Controller {
+@RequestMapping("/k2")
+public class K2Controller {
     @Autowired
-    private K1JpaRepository k1JpaRepository;
+    private K2JpaRepository k2JpaRepository;
 
 
     @GetMapping(value = "/all")
-    public List<K1> findAll() {
-        return k1JpaRepository.findAll();
+    public List<K2> findAll() {
+        return k2JpaRepository.findAll();
     }
+
     @GetMapping(value = "/{id}")
-    public Optional<K1> findK1ById(@PathVariable final Long id) {
-        return k1JpaRepository.findById(id);
+    public Optional<K2> findK1ById(@PathVariable final Long id) {
+        return k2JpaRepository.findById(id);
     }
 }

@@ -1,5 +1,8 @@
 package uty.ivc.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +17,8 @@ public class K3 {
     private String description;
     private Double value;
 
+    @JsonBackReference
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "k3")
     private Set<Proposal> proposals = new HashSet<>(0);
 
